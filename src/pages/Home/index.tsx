@@ -1,18 +1,26 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTodos } from '../../hooks/useTodos';
+import axios from 'axios';
 import React from 'react';
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const todoInputRef = useRef<HTMLInputElement>(null);
-  const { todos, addTodo, removeTodo } = useTodos([
-    { content: 'First todo item', id: 1, done: false },
-  ]);
+  const { todos, addTodo, removeTodo } = useTodos([]);
 
   const cleanUp = () => {
     const { current } = todoInputRef;
 
     if (current) current.value = '';
   };
+
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BASE_API}/todos`)
+      // eslint-disable-next-line no-console
+      .then((resp) => console.log(resp))
+      // eslint-disable-next-line no-console
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="mx-auto w-[400px] p-6 bg-white rounded-xl shadow-xl space-y-6 mt-10">
@@ -22,6 +30,7 @@ export const Home = () => {
 
       {todos.map(({ id, content }) => (
         <div key={id} className="flex items-center justify-between">
+          <div>{id}</div>
           <div>{content}</div>
           <button
             onClick={() => removeTodo(id)}
