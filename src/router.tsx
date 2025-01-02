@@ -1,5 +1,5 @@
-import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
 
 interface RouteCommon {
   ErrorBoundary?: React.ComponentType<unknown>;
@@ -17,13 +17,13 @@ interface Route extends RouteCommon {
 }
 
 const normalizePath = (fileName: string): string => {
-  return fileName.includes("$")
-    ? fileName.replace("$", ":")
-    : fileName.replace(/\/index/, "");
+  return fileName.includes('$')
+    ? fileName.replace('$', ':')
+    : fileName.replace(/\/index/, '');
 };
 
 const getRoutes = (): Route[] => {
-  const pages: Pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
+  const pages: Pages = import.meta.glob('./pages/**/*.tsx', { eager: true });
   const routes: Route[] = [];
 
   for (const path of Object.keys(pages)) {
@@ -31,10 +31,9 @@ const getRoutes = (): Route[] => {
 
     if (!fileName) continue;
 
-    const normalizedPathName = normalizePath(fileName);
-
     routes.push({
-      path: fileName === "index" ? "/" : `${normalizedPathName.toLowerCase()}`,
+      path:
+        fileName === 'index' ? '/' : `${normalizePath(fileName).toLowerCase()}`,
       Element: pages[path].default,
       ErrorBoundary: pages[path]?.ErrorBoundary,
     });

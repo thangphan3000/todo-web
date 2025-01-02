@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.tsx"],
+  content: ['./src/**/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        mplus: ["'M PLUS Rounded 1c'", 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 };
