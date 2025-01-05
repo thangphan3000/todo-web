@@ -1,3 +1,5 @@
+/// <reference types="vitest/config" />
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
@@ -14,5 +16,12 @@ export default defineConfig({
     rollupOptions: {
       external: ['react', /^react\/.*/, 'react-dom', /react-dom\/.*/],
     },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/vitest.setup.ts'],
+    testTimeout: 5000,
+    reports: ['verbose'],
   },
 });
