@@ -12,11 +12,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/'),
     },
   },
-  build: {
-    rollupOptions: {
-      external: ['react', /^react\/.*/, 'react-dom', /react-dom\/.*/],
-    },
-  },
+  // @ts-expect-error skip missing type in defineConfig function
   test: {
     globals: true,
     environment: 'jsdom',
