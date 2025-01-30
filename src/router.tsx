@@ -27,7 +27,7 @@ const getRoutes = (): Route[] => {
   const routes: Route[] = [];
 
   for (const path of Object.keys(pages)) {
-    const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
+    const fileName = RegExp(/\.\/pages\/(.*)\.tsx$/).exec(path)?.[1];
 
     if (!fileName) continue;
 
