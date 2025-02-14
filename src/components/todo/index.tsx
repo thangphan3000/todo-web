@@ -16,7 +16,7 @@ const Todo: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASE_API}/todos`)
+      .get(`${import.meta.env.VITE_API_URL}/todos`)
       // eslint-disable-next-line no-console
       .then((resp) => console.log(resp))
       // eslint-disable-next-line no-console
@@ -29,7 +29,7 @@ const Todo: React.FC = () => {
         To-Do List
       </h1>
 
-      {todos.map(({ id, content }) => (
+      {todos?.map(({ id, content }) => (
         <div key={id} className="flex items-center justify-between">
           <div>{id}</div>
           <div>{content}</div>
