@@ -16,7 +16,7 @@ const Todo: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/todos`)
+      .get(`${import.meta.env.VITE_API_URL}/api/todos`)
       // eslint-disable-next-line no-console
       .then((resp) => console.log(resp))
       // eslint-disable-next-line no-console

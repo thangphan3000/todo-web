@@ -46,7 +46,7 @@ export const useTodos = (
   const addTodo = useCallback(async (content: string) => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/todos`,
+        `${import.meta.env.VITE_API_URL}/api/todos`,
         {
           content,
         },
@@ -65,7 +65,7 @@ export const useTodos = (
 
   const removeTodo = useCallback(async (id: number) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/todos/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/todos/${id}`);
 
       dispatch({
         type: TodoAction.remove,
@@ -81,7 +81,7 @@ export const useTodos = (
     const fetchTodos = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/todos`,
+          `${import.meta.env.VITE_API_URL}/api/todos`,
         );
         dispatch({
           type: TodoAction.setTodos,
