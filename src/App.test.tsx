@@ -6,6 +6,6 @@ describe('App', () => {
   it('renders the component', () => {
     const { container } = render(<App />);
 
-    expect(container).not.toBeInTheDocument();
+    expect(container).toBeInTheDocument();
   });
 });
