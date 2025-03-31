@@ -26,7 +26,7 @@ const Todo: React.FC = () => {
   return (
     <div className="mx-auto w-[400px] p-6 bg-white rounded-xl shadow-xl space-y-6 mt-10">
       <h1 className="text-4xl font-extrabold text-center text-gray-900 mb-6">
-        To-Do List
+        To-Do List App
       </h1>
 
       {todos?.map(({ id, content }) => (
