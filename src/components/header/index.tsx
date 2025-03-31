@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Header: React.FC = () => {
-  return <header>Hello nav</header>;
+  return <nav>Hello nav</nav>;
 };
 
 export default Header;
