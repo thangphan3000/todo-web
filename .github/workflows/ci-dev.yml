@@ -1,9 +1,5 @@
 name: CI dev
 
-env:
-  ECR_REPOSITORY: nonprod-cozy-todo-frontend
-  IMAGE_TAG: ${{ github.sha }}
-
 on:
   pull_request:
     branches: ['main']
@@ -12,7 +8,20 @@ jobs:
   build-and-push:
     name: CI dev
     runs-on: ubuntu-latest
+    env:
+      ECR_REPOSITORY: nonprod-cozy-todo-frontend
+      IMAGE_TAG: ${{ github.sha }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
     steps:
+      - name: Send initial notification
+        uses: act10ns/slack@v2
+        with:
+          status: starting
+          channel: '#workflows'
+          message: Starting CI pipeline
+        if: always()
+
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -88,3 +97,10 @@ jobs:
           vuln-type: 'os,library'
           ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
+
+      - name: Send result notification
+        uses: act10ns/slack@v2
+        with:
+          status: ${{ job.status }}
+          channel: '#workflows'
+        if: always()
