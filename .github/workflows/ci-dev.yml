@@ -1,4 +1,4 @@
-name: Build and Push React Docker Image to AWS ECR
+name: CI dev
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build-and-push:
-    name: Build and Push to ECR
+    name: CI dev
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
