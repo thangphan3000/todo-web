@@ -24,9 +24,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get tags
-        run: git fetch --tags origin
-
       - name: Setup pnpm
         run: npm install -g pnpm
 

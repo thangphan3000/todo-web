@@ -8,6 +8,7 @@ MINOR='minor'
 PATCH='patch'
 
 get_latest_tag() {
+  git fetch --tags origin
   git describe --tags 2>/dev/null
 }
 
