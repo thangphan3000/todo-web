@@ -32,7 +32,7 @@ if [[ "$VERSION_TYPE" != "$MAJOR" && "$VERSION_TYPE" != "$MINOR" && "$VERSION_TY
   exit 1
 fi
 
-git fetch --tags origin
+# git fetch --tags origin
 CURRENT_TAG_VERSION=$(git tag | tail -1 2>/dev/null)
 echo "latest tag: $CURRENT_TAG_VERSION"
 
