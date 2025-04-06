@@ -31,6 +31,7 @@ if [[ "$VERSION_TYPE" != "$MAJOR" && "$VERSION_TYPE" != "$MINOR" && "$VERSION_TY
   exit 1
 fi
 
+echo "latest tag: $(get_latest_tag)"
 CURRENT_TAG_VERSION=$(get_latest_tag)
 
 if [ "$CURRENT_TAG_VERSION" == '' ]
