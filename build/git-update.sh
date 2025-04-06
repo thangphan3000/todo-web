@@ -8,7 +8,7 @@ MINOR='minor'
 PATCH='patch'
 
 get_latest_tag() {
-  git fetch 2>/dev/null
+  git fetch --prune --unshallow 2>/dev/null
   git describe --tags 2>/dev/null
 }
 
