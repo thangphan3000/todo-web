@@ -9,7 +9,7 @@ PATCH='patch'
 
 get_latest_tag() {
   git fetch --tags origin
-  return git describe --tags 2>/dev/null
+  git tag | tail -1 2>/dev/null
 }
 
 get_latest_commit_hash() {
@@ -32,8 +32,7 @@ if [[ "$VERSION_TYPE" != "$MAJOR" && "$VERSION_TYPE" != "$MINOR" && "$VERSION_TY
   exit 1
 fi
 
-# git fetch --tags origin
-CURRENT_TAG_VERSION=$(git tag | tail -1 2>/dev/null)
+CURRENT_TAG_VERSION=$(get_latest_tag)
 echo "latest tag: $CURRENT_TAG_VERSION"
 
 if [ "$CURRENT_TAG_VERSION" == '' ]
